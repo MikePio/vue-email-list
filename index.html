@@ -13,13 +13,20 @@
   <link rel="stylesheet" href="style.css">
   <title>Vue Email List</title>
 </head>
-<body style="background-color: #303030; color: white; font-family: Arial, Helvetica, sans-serif;">
+<body style="background-color: #006aff; color: white; font-family: Arial, Helvetica, sans-serif;">
   
   <div id="app">
-    <div v-if="loading == true">Caricamento in corso...</div>
+    <h2 class="title">10 Email Random</h2>
+    <div v-if="loading == true">
+      <div>Caricamento in corso...</div>
+      <!-- barra di caricamento -->
+      <div class="loadingio-spinner-pulse-5580q6e85pr"><div class="ldio-hogrx7z12zt">
+        <div></div><div></div><div></div>
+        </div></div>
+    </div>
     <div v-else="loading == false">
 
-      <div v-for="mailTest in mails" v-if="error == false" >{{ mailTest }}</div>
+      <div v-for="mailTest in mails" v-if="error == false" class="mail-list" >{{ mailTest }}</div>
       <!-- <div v-if="error == false">{{ mail }}</div>
         <div v-if="error == false">{{ mail }}</div>
         <div v-if="error == false">{{ mail }}</div>

@@ -33,6 +33,7 @@ createApp({
             // più mail
             this.mails.push(result.data.response);
             console.log(this.mails.length);
+            //*quando la lunghezza dell'array è = 10 compaiono le email tutte in una volta
             this.checkLenghtMails();
             //* Oppure
             // if(this.mails.length == 10){
@@ -46,8 +47,9 @@ createApp({
           })
       }
     },
-
+    
     checkLenghtMails() {
+      //*quando la lunghezza dell'array è = 10 compaiono le email tutte in una volta
       if (this.mails.length == 10) {
         this.loading = false
       }
