@@ -16,8 +16,24 @@
 <body style="background-color: #303030; color: white; font-family: Arial, Helvetica, sans-serif;">
   
   <div id="app">
-    <div v-if="error == false">{{ mail }}</div>
-    <div v-else="error == true">C'è un errore!</div>
+    <div v-if="loading == true">Caricamento in corso...</div>
+    <div v-else="loading == false">
+
+      <div v-for="mailTest in mails" v-if="error == false" >{{ mailTest }}</div>
+      <!-- <div v-if="error == false">{{ mail }}</div>
+        <div v-if="error == false">{{ mail }}</div>
+        <div v-if="error == false">{{ mail }}</div>
+        <div v-if="error == false">{{ mail }}</div>
+        <div v-if="error == false">{{ mail }}</div>
+        <div v-if="error == false">{{ mail }}</div>
+        <div v-if="error == false">{{ mail }}</div>
+        <div v-if="error == false">{{ mail }}</div>
+        <div v-if="error == false">{{ mail }}</div>
+        <div v-if="error == false">{{ mail }}</div>
+        <div v-if="error == false">{{ mail }}</div> -->
+        <div v-else="error == true">C'è un errore!</div>
+      </div>
+
   </div>
 
   <div id="output"></div>

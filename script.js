@@ -9,40 +9,63 @@ Far comparire gli indirizzi email solamente quando sono stati tutti generati.
 
 const { createApp } = Vue;
 
-createApp ({
+createApp({
   data() {
     return {
+      mails: [],
+      loading: true,
       mail: '',
       error: false
     }
   },
 
   methods: {
+    multipleMails() {
+      for (let i = 1; i < 11; i++) {
+        // richiesta
+        axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
+          //! test errore
+          // axios.get('https://Fflynn.boolean.careers/exercises/api/random/mail')
+          // dati ottenuti
+          .then((result) => {
+            // una sola mail
+            // this.mail = result.data.response; 
+            // più mail
+            this.mails.push(result.data.response);
+            console.log(this.mails.length);
+            this.checkLenghtMails();
+            //* Oppure
+            // if(this.mails.length == 10){
+            // this.loading = false
+            // }
+          })
+          // errori ottenuti
+          .catch(error => {
+            console.log(error);
+            this.error = true;
+          })
+      }
+    },
+
+    checkLenghtMails() {
+      if (this.mails.length == 10) {
+        this.loading = false
+      }
+
+    }
 
   },
 
   computed: {
-    
-    
+
+  },
+
+  created() {
+
   },
 
   mounted() {
-    // richiesta
-    axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
-    //! test errore
-    // axios.get('https://Fflynn.boolean.careers/exercises/api/random/mail')
-    // dati ottenuti
-    .then( (result) => {
-      console.log(result.data);
-      
-      this.mail = result.data.response
-    })
-    // errori ottenuti
-    .catch( error => {
-      console.log(error);
-      this.error = true
-    })
-
+    this.multipleMails()
   }
 
 }).mount('#app')
